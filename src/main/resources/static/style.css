@@ -7,6 +7,7 @@
 html, body {
     width: 100%;
     min-height: 100%;
+    overflow-x: clip;
 }
 
 :root {
@@ -117,7 +118,7 @@ body {
 }
 
 @media (max-width: 600px) {
-    .live-indicator span:not(.live-dot) { display: none; }
+    .live-text { display: none; }
 }
 
 /* ===================== HEADER ===================== */
@@ -427,11 +428,19 @@ form button:hover::after { left: 100%; }
 /* ===================== CHART ===================== */
 
 .chart-container {
+    position: relative;
     max-width: 680px;
+    height: 340px;
     margin: 0 auto;
 }
 
 /* ===================== TABLE ===================== */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
 
 table { width: 100%; border-collapse: collapse; }
 
@@ -498,4 +507,77 @@ table tbody tr:hover { background-color: var(--sage-50); }
     padding: 24px;
     color: var(--ink-400);
     font-size: 0.8rem;
+}
+
+/* ===================== CELULAR ===================== */
+
+/* Inputs com font-size < 16px fazem o iPhone dar zoom ao focar */
+@media (max-width: 760px) {
+    form input,
+    form select { font-size: 16px; }
+}
+
+@media (max-width: 600px) {
+    .navbar-inner { padding: 12px 16px; }
+    .topbar { padding: 32px 16px 44px; }
+    .topbar h1 { font-size: 1.55rem; }
+    .topbar .subtitle { font-size: 0.92rem; }
+
+    main {
+        padding: 0 12px;
+        gap: 16px;
+    }
+
+    .grid-2 { gap: 16px; }
+
+    .card { padding: 20px 16px; }
+
+    .input-pair { grid-template-columns: 1fr; }
+
+    .chart-container { height: 300px; }
+
+    /* Tabela vira uma lista de cartões: cada linha é um bloco
+       e cada célula mostra o título da coluna (data-label) */
+    #tabelaMetas thead { display: none; }
+
+    #tabelaMetas,
+    #tabelaMetas tbody,
+    #tabelaMetas tr,
+    #tabelaMetas td {
+        display: block;
+        width: 100%;
+    }
+
+    #tabelaMetas tr {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 6px 12px;
+        margin-bottom: 12px;
+    }
+
+    #tabelaMetas td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 0;
+        text-align: right;
+        word-break: break-word;
+    }
+
+    #tabelaMetas tr td:last-child { border-bottom: none; }
+
+    #tabelaMetas td::before {
+        content: attr(data-label);
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--ink-600);
+        text-align: left;
+        flex-shrink: 0;
+    }
+
+    #tabelaMetas td.celula-acao { justify-content: flex-end; }
+    #tabelaMetas td.celula-acao::before { content: none; }
 }

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 </head>
 <body>
@@ -25,7 +25,7 @@
         </div>
         <div class="live-indicator">
             <span class="live-dot"></span>
-            Monitorando em tempo real
+            <span class="live-text">Monitorando em tempo real</span>
         </div>
     </div>
 </nav>
@@ -153,21 +153,23 @@
             <span class="card-eyebrow">Registros</span>
             <h2>Metas cadastradas</h2>
         </div>
-        <table id="tabelaMetas">
-            <thead>
-            <tr>
-                <th>Empresa</th>
-                <th>Pilar</th>
-                <th>Descrição</th>
-                <th>Atual</th>
-                <th>Meta</th>
-                <th>% Atingido</th>
-                <th>Classificação</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <div class="table-wrapper">
+            <table id="tabelaMetas">
+                <thead>
+                <tr>
+                    <th>Empresa</th>
+                    <th>Pilar</th>
+                    <th>Descrição</th>
+                    <th>Atual</th>
+                    <th>Meta</th>
+                    <th>% Atingido</th>
+                    <th>Classificação</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
         <p class="empty-state" id="estadoVazio">Nenhuma meta cadastrada ainda. Comece cadastrando uma empresa e uma meta acima.</p>
     </section>
 </main>
@@ -176,6 +178,6 @@
     <p>Sistema de Monitoramento de Metas ESG · Projeto acadêmico · Ciência da Computação</p>
 </footer>
 
-<script src="app.js"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>
